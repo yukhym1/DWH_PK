@@ -1,6 +1,4 @@
-# DWH_PK
 DWH 1.0
-
 The first version of DWH with dummy data.
 
 Consists of:
