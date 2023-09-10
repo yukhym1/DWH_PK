@@ -1,34 +1,3 @@
-CREATE TABLE Users (
-    UserID SERIAL PRIMARY KEY,
-    PhoneNumber VARCHAR(20),
-    Email VARCHAR(255),
-    IsVerified CHAR(1) CHECK (IsVerified IN ('Y', 'N'))
-);
-
-CREATE TABLE Profiles (
-    ProfileID SERIAL PRIMARY KEY,
-    UserID INT REFERENCES Users(UserID),
-    ProfileType VARCHAR(255),
-    ProfileData TEXT
-);
-
-CREATE TABLE Orders (
-    OrderID SERIAL PRIMARY KEY,
-    UserID INT REFERENCES Users(UserID),
-    OrderDate TIMESTAMP,
-    TotalAmount DECIMAL(10, 2),
-    OrderDetails TEXT
-);
-
-CREATE TABLE Transactions (
-    TransactionID SERIAL PRIMARY KEY,
-    UserID INT REFERENCES Users(UserID),
-    OrderID INT REFERENCES Orders(OrderID),
-    TransactionDate TIMESTAMP,
-    TransactionAmount DECIMAL(10, 2),
-    TransactionDetails TEXT
-);
-
 DO $$ 
 DECLARE
     i INT;
